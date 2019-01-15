@@ -1,5 +1,7 @@
 (ns missive.core
   (:require [missive.components.text]
+            [missive.components.head]
+            [missive.components.email]
             [hiccup.core :refer [html]]))
 
 (declare render-template-element)
@@ -12,6 +14,8 @@
 (defn- render-component
   [type, attributes, rendered-children]
   ((case type
+     :email missive.components.email/render
+     :head missive.components.head/render
      :text missive.components.text/render
      (constantly :invalid-element))
    attributes rendered-children))
