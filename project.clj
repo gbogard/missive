@@ -1,4 +1,9 @@
-(defproject responsive-mail "0.1.0-SNAPSHOT"
+(defproject missive "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [hiccup "1.0.5"]]
-  :repl-options {:init-ns responsive-mail.core})
+  :repl-options {:init-ns missive.core}
+  :profiles {:dev {:source-paths ["dev"]
+                   :plugins [[com.jakemccrary/lein-test-refresh "0.23.0"]
+                             [pjstadig/humane-test-output "0.9.0"]
+                             [lein-cloverage "1.0.13"]]
+                   :dependencies [[org.clojure/tools.namespace "0.2.11"]]}})
