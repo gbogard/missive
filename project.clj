@@ -1,5 +1,6 @@
 (defproject missive "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.9.0"]
+                 [prismatic/schema "1.1.9"]
                  [hiccup "1.0.5"]
                  [garden "1.3.6"]]
   :repl-options {:init-ns missive.core}
