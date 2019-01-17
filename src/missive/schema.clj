@@ -8,11 +8,14 @@
   "Component attributes is a map of keywords to any value, typically a string or a number"
   {s/Keyword s/Any})
 
+(def attributes-or-template-element
+  (s/cond-pre attributes (s/recursive #'template-element)))
+
 (def component-vector
-  "A component follows the Hiccup syntax [:name arguments children*]
+  "A component follows the Hiccup syntax [:name arguments? children*]
    It can be compiled to a real html element"
   [(s/one s/Keyword "component name")
-   (s/optional attributes "attributes")
+   (s/optional attributes-or-template-element "attributes")
    (s/recursive #'template-element)])
 
 (def template-element
@@ -31,6 +34,8 @@
 
 (def template-element-validator (s/validator (s/recursive #'template-element)))
 
+(def template-element-checker (s/checker (s/recursive #'template-element)))
+
 (def component-vector?
   "Returns true if x is a valid component vector"
   (comp nil? component-vector-checker))
@@ -38,3 +43,7 @@
 (def attributes?
   "Returns true if x is a valid map of attributes"
   (comp nil? attributes-checker))
+
+(def template-element?
+  "Returns true if x is a valid template-element"
+  (comp nil? template-element-checker))

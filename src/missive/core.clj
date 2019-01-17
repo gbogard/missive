@@ -9,8 +9,8 @@
 (declare render-template-element)
 
 (defn extract-attributes-and-children
-  "Given a vector of form [attributes{}? children*],
-  returns a vector of the form [attributes, children*] where attributes is a map and children a list."
+  "Given a vector of form [attributes{}? children*], returns a vector of the form 
+   [attributes, children*] where attributes is a map and children a list of template elements."
   [seq]
   [(->> seq
         (filter attributes?)
