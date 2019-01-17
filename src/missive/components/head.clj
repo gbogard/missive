@@ -23,11 +23,14 @@
               :text-decoration 'none
               :-ms-interpolation-mode 'bicubic}]))
 
+(def default-elements
+  [[:meta {:http-equiv "Content-Type" :content "text/html; charset=UTF-8"}]
+   [:meta {:name "viewport" :content "width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"}]
+   [:meta {:http-equiv "X-UA-Compatible" :content "IE=9; IE=8; IE=7; IE=EDGE"}]
+   [:style default-style]])
+
 (defn render
   [attributes children]
   [:head
-   [:meta {:http-equiv "Content-Type" :content "text/html; charset=UTF-8"}]
-   [:meta {:name "viewport" :content "width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"}]
-   [:meta {:http-equiv "X-UA-Compatible" :content "IE=9; IE=8; IE=7; IE=EDGE"}]
-   [:style default-style]
+   default-elements
    children])
