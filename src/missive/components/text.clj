@@ -1,8 +1,9 @@
 (ns missive.components.text)
 
 (def ^:private valid-attributes
-  [:class])
+  [:class
+   :style])
 
 (defn render
-  [attributes children]
+  [attributes children _]
   [:span (select-keys attributes valid-attributes) children])

@@ -30,7 +30,8 @@
    [:style default-style]])
 
 (defn render
-  [attributes children]
+  [attributes children _]
   [:head
-   default-elements
-   children])
+   (concat
+    default-elements
+    children)])
